@@ -30,9 +30,9 @@ class AdminProfileViewSet(viewsets.ModelViewSet):
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 class HomeVideoViewSet(viewsets.ModelViewSet):
     queryset = HomeVideo.objects.all()
     serializer_class = HomeVideoSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]

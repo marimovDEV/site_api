@@ -40,7 +40,7 @@ router.register(r'admin-profile',AdminProfileViewSet)
 
 urlpatterns = [
    path('', include(router.urls)),
-   path('auth/', include("dj_rest_auth.urls"), name="auth"),
+#    path('auth/', include("dj_rest_auth.urls"), name="auth"),
    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 

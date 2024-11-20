@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'unfold',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,11 +40,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
     'rest_framework',
-    'dj_rest_auth',
-    'rest_framework.authtoken',
+    # 'dj_rest_auth',  # Removed
+    # 'rest_framework.authtoken',  # Removed
     'drf_yasg',
     'corsheaders',
 ]
+REST_AUTH_TOKEN_MODEL = None
+
+
+# Token modeli ishlatilmasin
+TOKEN_MODEL = None
+
+UNFOLD = {
+    'SITE_TITLE': 'My Admin Panel',  # Admin panel nomi
+    'SITE_HEADER': 'Admin Panel',    # Sarlavha
+    'SITE_SUBTITLE': 'Welcome!',     # Subtitle
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -78,7 +90,6 @@ TEMPLATES = [
         },
     },
 ]
-
 
 WSGI_APPLICATION = 'oboy.wsgi.application'
 
@@ -116,9 +127,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uz'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
@@ -128,9 +139,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'  # Bu avvaldan bo'lishi kerak
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # Bu yangi qator
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Dj-rest-auth token bilan ishlamaslik uchun JWT foydalanish
+# settings.py
+
+# dj_rest_auth kutubxonasini ishlatmaslik uchun
+REST_USE_JWT = True  # JWTni ishlatishga ruxsat berish
+LOGIN_SERIALIZER = 'dj_rest_auth.serializers.LoginSerializer'
